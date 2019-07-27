@@ -1,0 +1,4 @@
+**/backend/env
+**.pyc
+**/frontend/gui/node_modules/
+**/frontend/gui/build
