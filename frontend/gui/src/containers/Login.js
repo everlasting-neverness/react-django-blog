@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { Form, Icon, Input, Button, Spin } from 'antd';
+import * as actions from '../store/actions/auth';
 
 const antIcon = <Icon type='loading' style={{ fontSize: 24 }} spin />;
 
@@ -10,9 +11,10 @@ class Login extends React.Component {
         e.preventDefault();
         this.props.form.validateFields((err, values) => {
             if (!err) {
-                console.log('Received values of form: ', values);
+                this.props.onAuth(values.userName, values.password);
             }
         });
+        this.props.history.push('/');
     };
 
     render() {
@@ -81,7 +83,9 @@ class Login extends React.Component {
                             <NavLink
                                 style={{ marginRight: '10px' }}
                                 to='/signup/'
-                            > Signup
+                            >
+                                {' '}
+                                Signup
                             </NavLink>
                         </Form.Item>
                     </Form>
@@ -97,7 +101,14 @@ const mapStateToProps = state => {
     return {
         loading: state.loading,
         error: state.error
-    }
-}
+    };
+};
 
-export default connect(mapStateToProps)(WrappedNormalLoginForm);
+const mapDispatchToProps = dispatch => {
+    return {
+        onAuth: (username, password) =>
+            dispatch(actions.authLogin(username, password))
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(WrappedNormalLoginForm);
