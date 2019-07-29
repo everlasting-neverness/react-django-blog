@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import constants from '../constants';
 
 import Articles from '../components/Articles';
 import CustomForm from '../components/Form';
@@ -10,7 +11,7 @@ class ArticleList extends React.Component {
     };
 
     fetchArticles = () => {
-        axios.get('http://127.0.0.1:8000/api/').then(res => {
+        axios.get(constants.apiURL).then(res => {
             this.setState({
                 articles: res.data
             });
@@ -27,7 +28,7 @@ class ArticleList extends React.Component {
                 <Articles data={this.state.articles} />
                 <br />
                 <h2>Create an article</h2>
-                <CustomForm />
+                <CustomForm requestType='post' btnText='Create' />
             </div>
         );
     }
