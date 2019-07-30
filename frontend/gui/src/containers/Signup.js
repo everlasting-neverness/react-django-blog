@@ -17,7 +17,7 @@ class Signup extends React.Component {
                     values.userName,
                     values.email,
                     values.password,
-                    values.passwordConfirmation
+                    values.confirm
                 );
             }
         });
@@ -119,7 +119,7 @@ class Signup extends React.Component {
                     )}
                 </Form.Item>
                 <Form.Item>
-                    {getFieldDecorator('passwordConfirmation', {
+                    {getFieldDecorator('confirm', {
                         rules: [
                             {
                                 required: true,
@@ -172,13 +172,13 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onAuth: (username, email, password, passwordConfirmation) =>
+        onAuth: (username, email, password1, password2) =>
             dispatch(
                 actions.authSignup(
                     username,
                     email,
-                    password,
-                    passwordConfirmation
+                    password1,
+                    password2
                 )
             )
     };

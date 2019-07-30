@@ -59,15 +59,15 @@ export const authLogin = (username, password) => {
     };
 };
 
-export const authSignup = (username, email, password, passwordConfirmation) => {
+export const authSignup = (username, email, password1, password2) => {
     return dispatch => {
         dispatch(authStart());
         axios
             .post(constants.authURL + 'registration/', {
                 username,
                 email,
-                password,
-                passwordConfirmation
+                password1,
+                password2
             })
             .then(res => {
                 const { key: token } = res.data.key;
