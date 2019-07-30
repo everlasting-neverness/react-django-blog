@@ -39,8 +39,19 @@ function Articles(props) {
                         }
                     >
                         <List.Item.Meta
-                            avatar={<Avatar src={item.avatar || 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png'} />}
-                            title={<Link to={`/articles/${item.id}`}>{item.title}</Link>}
+                            avatar={
+                                <Avatar
+                                    src={
+                                        item.avatar ||
+                                        'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png'
+                                    }
+                                />
+                            }
+                            title={
+                                <Link to={`/articles/${item.id}`}>
+                                    {item.title}
+                                </Link>
+                            }
                             description={item.description}
                         />
                         {item.content}

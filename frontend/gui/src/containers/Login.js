@@ -31,7 +31,7 @@ class Login extends React.Component {
                 ) : (
                     <Form onSubmit={this.handleSubmit} className='login-form'>
                         <Form.Item>
-                            {getFieldDecorator('username', {
+                            {getFieldDecorator('userName', {
                                 rules: [
                                     {
                                         required: true,
@@ -95,7 +95,7 @@ class Login extends React.Component {
     }
 }
 
-const WrappedNormalLoginForm = Form.create({ name: 'normal_login' })(Login);
+const LoginForm = Form.create({ name: 'normal_login' })(Login);
 
 const mapStateToProps = state => {
     return {
@@ -111,4 +111,7 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(WrappedNormalLoginForm);
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(LoginForm);

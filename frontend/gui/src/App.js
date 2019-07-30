@@ -8,7 +8,6 @@ import 'antd/dist/antd.css';
 import CustomLayout from './containers/Layout';
 
 class App extends React.Component {
-    
     componentDidMount() {
         this.props.onTryAutoSignup();
     }
@@ -29,13 +28,16 @@ class App extends React.Component {
 const mapStateToProps = state => {
     return {
         isAuthenticated: state.token !== null
-    }
-}
+    };
+};
 
 const mapDispatchToProps = dispatch => {
     return {
         onTryAutoSignup: () => dispatch(actions.authCheckState())
-    }
-}
+    };
+};
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(App);
